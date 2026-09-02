@@ -53,4 +53,17 @@ const updateQuote = async (req, res) => {
     }
 };
 
-module.exports = { renderIndex, postSingle, updateQuote };
+const deleteQuote = async (req, res) => {
+    try {
+        const result = await mongodb.getDb().db().collection('quotes').deleteOne({ character: 'Darth Vader' });
+
+        if (result.deletedCount === 0) {
+            return res.json('No Darth Vader quote to delete');
+        }
+        res.json("Deleted Darth Vader's quote");
+    } catch (error) {
+        res.status(500).json({ message: 'Error deleting quote', error });
+    }
+};
+
+module.exports = { renderIndex, postSingle, updateQuote, deleteQuote };
