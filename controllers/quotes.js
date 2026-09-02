@@ -14,4 +14,12 @@ const postSingle = async (req, res) => {
     }
 };
 
-module.exports = { postSingle};
+const getAll = async (req, res) => {
+    const result = await mongodb.getDb().db().collection('quotes').find();
+    result.toArray().then((lists) => {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(lists);
+    });
+}
+
+module.exports = { postSingle, getAll};
