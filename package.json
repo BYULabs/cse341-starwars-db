@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/BYULabs/cse341-starwars-db/issues"
   },
-  "homepage": "https://github.com/BYULabs/cse341-starwars-db#readme"
+  "homepage": "https://github.com/BYULabs/cse341-starwars-db#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
