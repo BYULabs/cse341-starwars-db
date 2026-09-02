@@ -27,12 +27,30 @@ const postSingle = async (req, res) => {
     }
 };
 
-const getAll = async (req, res) => {
-    const result = await mongodb.getDb().db().collection('quotes').find();
-    result.toArray().then((lists) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(lists);
-    });
+const updateQuote = async (req, res) => {
+    try {
+        const filter = { character: 'Yoda' };
+        const update = {
+            $set: {
+                character: req.body.name,
+                quote: req.body.quote
+            }
+        };
+
+        const result = await mongodb.getDb().db().collection('quotes').findOneAndUpdate(
+            filter, 
+            update, 
+            { returnDocument: 'after' }
+        );
+
+        if (result) {
+            res.json('Success');
+        } else {
+            res.status(404).json('No quote found to update');
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating quote', error });
+    }
 };
 
-module.exports = { renderIndex, postSingle, getAll };
+module.exports = { renderIndex, postSingle, updateQuote };
