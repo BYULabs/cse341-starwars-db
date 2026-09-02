@@ -4,42 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
-<body>
-    <h1>May Node and Express be with you</h1>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col items-center p-6 font-sans">
 
-    <form action="/quotes" method="POST">
-        <input type="text" name="character" placeholder="character">
-        <input type="text" name="quote" placeholder="quote">
-        <button type="submit">Submit</button>
-    </form>
+    <div class="max-w-2xl w-full space-y-8">
+        <!-- Header -->
+        <header class="text-center">
+            <h1 class="text-3xl font-extrabold text-yellow-400 tracking-wide uppercase">May Node and Express be with you</h1>
+        </header>
 
-    <h2>Quotes</h2>
-    <ul>
-        <% quotes.forEach(quote => { %>
-            <li>
-                <strong><%= quote.character %>:</strong> "<%= quote.quote %>"
-            </li>
-        <% }) %>
-    </ul>
+        <!-- Form Section -->
+        <section class="bg-slate-800 p-6 rounded-lg shadow-md border border-slate-700">
+            <h2 class="text-xl font-bold mb-4 text-slate-200">Add a Quote</h2>
+            <form action="/quotes" method="POST" class="flex flex-col md:flex-row gap-3">
+                <input type="text" name="character" placeholder="Character" required class="flex-1 px-4 py-2 bg-slate-700 text-slate-100 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400 placeholder-slate-400">
+                <input type="text" name="quote" placeholder="Quote" required class="flex-1 px-4 py-2 bg-slate-700 text-slate-100 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400 placeholder-slate-400">
+                <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-semibold px-6 py-2 rounded transition">Submit</button>
+            </form>
+        </section>
 
-    <div>
-        <h2>Darth Vader invades!</h2>
-        <p>Replace first Yoda's quote with a quote written by Darth Vader</p>
-        <button id="update-button">Replace Yoda's quote</button>
+        <!-- Quotes Display Section -->
+        <section class="bg-slate-800 p-6 rounded-lg shadow-md border border-slate-700">
+            <h2 class="text-xl font-bold mb-4 text-slate-200">Quotes</h2>
+            <ul class="space-y-3">
+                <% quotes.forEach(quote => { %>
+                    <li class="bg-slate-700/50 p-4 rounded border-l-4 border-yellow-400">
+                        <span class="font-bold text-yellow-400"><%= quote.character %>:</span>
+                        <span class="italic text-slate-300">"<%= quote.quote %>"</span>
+                    </li>
+                <% }) %>
+            </ul>
+        </section>
+
+        <!-- Actions Section -->
+        <section class="grid md:grid-cols-2 gap-4">
+            <div class="bg-slate-800 p-5 rounded-lg border border-slate-700 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-200 mb-1">Darth Vader invades!</h2>
+                    <p class="text-sm text-slate-400 mb-4">Replace the first Yoda quote with one written by Darth Vader.</p>
+                </div>
+                <button id="update-button" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded transition">Replace Yoda's quote</button>
+            </div>
+
+            <div class="bg-slate-800 p-5 rounded-lg border border-slate-700 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-200 mb-1">Remove Darth Vader!</h2>
+                    <p class="text-sm text-slate-400 mb-4">Delete one Darth Vader quote. Does nothing if none remain.</p>
+                </div>
+                <button id="delete-button" class="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 rounded transition">Delete Darth Vader's quote</button>
+            </div>
+        </section>
+
+        <!-- Dynamic Feedback Message -->
+        <div id="message" class="text-center font-semibold text-yellow-400 empty:hidden"></div>
     </div>
-
-    <div>
-        <h2>Remove Darth Vader!</h2>
-        <p>
-            Delete one Darth Vader's quote. Does nothing if there are no more Darth
-            Vader's quote
-        </p>
-        <button id="delete-button">Delete Darth Vader's quote</button>
-    </div>
-    
-    <!-- Container for dynamic UI messages -->
-    <div id="message"></div>
 
     <script src="/main.js"></script>
 </body>
