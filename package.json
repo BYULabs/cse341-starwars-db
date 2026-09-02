@@ -1,0 +1,19 @@
+{
+  "name": "cse341-starwars-db",
+  "version": "1.0.0",
+  "description": "A full-stack Star Wars quote tracking CRUD app built with Node, Express, & MongoDB.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BYULabs/cse341-starwars-db.git"
+  },
+  "author": "Sebastián Iturralde",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BYULabs/cse341-starwars-db/issues"
+  },
+  "homepage": "https://github.com/BYULabs/cse341-starwars-db#readme"
+}
