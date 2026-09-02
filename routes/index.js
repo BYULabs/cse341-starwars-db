@@ -1,11 +1,11 @@
 const express = require('express');
-const path = require('path');
 const router = express.Router();
+const quotesController = require('../controllers/quotes');
 
-router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../index.html'));
-});
+// Render home page with quotes list
+router.get('/', quotesController.renderIndex);
 
+// Attach quotes routes (e.g., POST /quotes)
 router.use('/quotes', require('./quotes'));
 
 module.exports = router;
