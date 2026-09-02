@@ -1,16 +1,20 @@
 const express = require('express');
 const app = express();
+const mongodb = require('./db/connect');
+
+const port = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+app.use('/', require('./routes'));
+
+mongodb.initDb((err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    app.listen(port, () => {
+      console.log(`Connected to DB and listening on port ${port}`);
+    });
+  }
 });
-
-app.post('/quotes', (req, res) => {
-    console.log(req.body);
-})
-
-app.listen(3000, () => {
-    console.log('listening on port 3000');
-})
