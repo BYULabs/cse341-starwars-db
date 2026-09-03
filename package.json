@@ -6,12 +6,12 @@
   "scripts": {
     "dev": "node --watch server.js",
     "start": "node server.js",
-    "build": "echo 'CSS already compiled locally'",
+    "build:css": "tailwindcss -i ./src/input.css -o ./public/css/styles.css",
+    "build": "npm run build:css",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./public/css/styles.css --watch",
     "lint": "eslint",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "build:css": "tailwindcss -i ./src/input.css -o ./public/css/styles.css",
-    "watch:css": "tailwindcss -i ./src/input.css -o ./public/css/styles.css --watch"
+    "format:check": "prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -24,18 +24,18 @@
   },
   "homepage": "https://github.com/BYULabs/cse341-starwars-db#readme",
   "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
     "dotenv": "^17.4.2",
     "ejs": "^6.0.1",
     "eslint": "^10.9.1",
     "express": "^5.2.1",
-    "mongodb": "^7.6.0"
+    "mongodb": "^7.6.0",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.3.3",
     "autoprefixer": "^10.5.4",
     "eslint-config-prettier": "^10.1.8",
     "postcss": "^8.5.26",
-    "prettier": "^3.9.6",
-    "tailwindcss": "^4.3.3"
+    "prettier": "^3.9.6"
   }
 }
