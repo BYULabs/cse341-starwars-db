@@ -9,6 +9,8 @@
     "start": "node server.js",
     "build": "echo 'CSS already compiled locally'",
     "lint": "eslint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "build:css": "tailwindcss -i ./src/input.css -o ./public/css/styles.css",
     "watch:css": "tailwindcss -i ./src/input.css -o ./public/css/styles.css --watch"
   },
@@ -32,7 +34,9 @@
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.3",
     "autoprefixer": "^10.5.4",
+    "eslint-config-prettier": "^10.1.8",
     "postcss": "^8.5.26",
+    "prettier": "^3.9.6",
     "tailwindcss": "^4.3.3"
   }
 }
