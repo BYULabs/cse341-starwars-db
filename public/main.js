@@ -8,20 +8,20 @@ update.addEventListener('click', () => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       name: 'Darth Vader',
-      quote: 'I find your lack of faith disturbing.',
-    }),
+      quote: 'I find your lack of faith disturbing.'
+    })
   })
-    .then(res => {
+    .then((res) => {
       if (res.ok) return res.json();
     })
-    .then(response => {
+    .then((response) => {
       if (response === 'No quote found to update') {
         messageDiv.textContent = 'No Yoda quote to replace';
       } else {
         window.location.reload(); // Reloads the UI to render updated quotes
       }
     })
-    .catch(error => console.error(error));
+    .catch((error) => console.error(error));
 });
 
 deleteButton.addEventListener('click', () => {
@@ -32,15 +32,15 @@ deleteButton.addEventListener('click', () => {
       name: 'Darth Vader'
     })
   })
-    .then(res => {
+    .then((res) => {
       if (res.ok) return res.json();
     })
-    .then(response => {
+    .then((response) => {
       if (response === 'No Darth Vader quote to delete') {
         messageDiv.textContent = 'No Darth Vader quote to delete';
       } else {
         window.location.reload();
       }
     })
-    .catch(error => console.error(error));
+    .catch((error) => console.error(error));
 });
