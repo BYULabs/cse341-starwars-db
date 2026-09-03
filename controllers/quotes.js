@@ -8,7 +8,7 @@ const renderIndex = async (req, res) => {
             title: 'Star Wars Quote App',
             quotes: quotes 
         });
-    } catch (error) {
+    } catch {
         res.status(500).send('Error fetching quotes from database');
     }
 };
@@ -48,8 +48,8 @@ const updateQuote = async (req, res) => {
         } else {
             res.status(404).json('No quote found to update');
         }
-    } catch (error) {
-        res.status(500).json({ message: 'Error updating quote', error });
+    } catch {
+        res.status(500).json({ message: 'Error updating quote' });
     }
 };
 
@@ -61,8 +61,8 @@ const deleteQuote = async (req, res) => {
             return res.json('No Darth Vader quote to delete');
         }
         res.json("Deleted Darth Vader's quote");
-    } catch (error) {
-        res.status(500).json({ message: 'Error deleting quote', error });
+    } catch {
+        res.status(500).json({ message: 'Error deleting quote' });
     }
 };
 
